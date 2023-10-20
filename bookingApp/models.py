@@ -13,6 +13,7 @@ class Course(models.Model):
     coursesName=models.CharField(max_length=50)
     Description=models.TextField(max_length=50)
     image=models.CharField(max_length=100)
+    
     is_puplish=models.BooleanField()
     cateoryID=models.ForeignKey(categories,on_delete=models.CASCADE)
     

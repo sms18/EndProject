@@ -10,12 +10,16 @@ def post_student(request):
         data=json.loads(request.body)
         booking=Booking(
             firstName=data['firstName'],
-            lastnNme=data['lastName'],
+            lastName=data['lastName'],
             email=data['email'],
             phone=data['phone'],
             age=data['age'],
-            coursesID=['coursesID']
+            coursesID_id=data['coursesID'],
+                             
         )
+        
+
+
         booking.save()
         return JsonResponse({'message': 'Booking successful!'}, status=201)
     else:
@@ -26,3 +30,5 @@ def get_courses(request):
     courses=Course.objects.all()
     data = [{'id': course.id, 'name': course.coursesName, 'Description': course.Description,'img':course.image,'is_puplish':course.is_puplish,'cateoryID':course.cateoryID.categoryName } for course in courses]
     return JsonResponse(data,safe=False)
+
+
